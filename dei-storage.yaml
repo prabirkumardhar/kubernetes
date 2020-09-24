@@ -1,0 +1,29 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: dei-pv-volume
+  labels:
+    type: local
+    app: dei
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 15Gi
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: "/data/informatica/INFA1040"
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: dei-pv-claim
+  labels:
+    app: dei
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 15Gi
